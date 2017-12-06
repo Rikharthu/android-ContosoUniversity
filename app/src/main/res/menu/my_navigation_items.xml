@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/group_navigation"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/navdrawer_item_home"
+            android:checked="true"
+            android:title="@string/navdrawer_label_home"/>
+        <item
+            android:id="@+id/navdrawer_item_about"
+            android:checked="true"
+            android:title="@string/navdrawer_label_about"/>
+        <item
+            android:id="@+id/navdrawer_item_students"
+            android:checked="true"
+            android:title="@string/navdrawer_label_students"/>
+        <item
+            android:id="@+id/navdrawer_item_courses"
+            android:checked="true"
+            android:title="@string/navdrawer_label_courses"/>
+        <item
+            android:id="@+id/navdrawer_item_instructors"
+            android:checked="true"
+            android:title="@string/navdrawer_label_instructors"/>
+        <item
+            android:id="@+id/navdrawer_item_departments"
+            android:checked="true"
+            android:title="@string/navdrawer_label_departments"/>
+    </group>
+</menu>
