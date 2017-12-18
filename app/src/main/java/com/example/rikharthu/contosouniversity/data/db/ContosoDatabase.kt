@@ -16,6 +16,7 @@ abstract class ContosoDatabase : RoomDatabase() {
         /**
          * Create base tables
          */
+
         const val DATABASE_VERSION_1 = 1
         /**
          * Configured foreign keys

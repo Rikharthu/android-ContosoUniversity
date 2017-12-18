@@ -1,5 +1,6 @@
 package com.example.rikharthu.contosouniversity.data.db
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
@@ -22,6 +23,9 @@ interface InstructorDao {
 
     @Query("SELECT * FROM instructor WHERE first_name LIKE :first AND " + "last_name LIKE :last LIMIT 1")
     fun findByName(first: String, last: String): Instructor?
+
+    @Query("SELECT * FROM instructor WHERE id = :id")
+    fun findByIdLiveData(id: Long): LiveData<Instructor>
 
     @Insert
     fun insertAll(vararg instructors: Instructor): List<Long>

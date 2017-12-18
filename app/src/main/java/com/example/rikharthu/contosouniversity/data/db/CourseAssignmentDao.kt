@@ -1,5 +1,6 @@
 package com.example.rikharthu.contosouniversity.data.db
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
@@ -17,6 +18,9 @@ interface CourseAssignmentDao {
 
     @Query("SELECT * FROM course_assignment WHERE course_id = :id")
     fun findByCourseId(id: Long): CourseAssignment
+
+    @Query("SELECT * FROM course_assignment WHERE course_id = :id")
+    fun findByCourseIdLiveData(id: Long): LiveData<CourseAssignment>
 
     @Query("SELECT * FROM course_assignment WHERE instructor_id = :id")
     fun findByInstructorId(id: Long): CourseAssignment

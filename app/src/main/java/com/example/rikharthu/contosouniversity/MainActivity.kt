@@ -1,5 +1,7 @@
 package com.example.rikharthu.contosouniversity
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.content.res.Configuration
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -10,8 +12,13 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.widget.LinearLayout
 import android.widget.Toast
+import com.example.rikharthu.contosouniversity.data.models.Course
+import com.example.rikharthu.contosouniversity.data.models.Instructor
+import com.example.rikharthu.contosouniversity.viewmodels.ContosoViewModelFactory
+import com.example.rikharthu.contosouniversity.viewmodels.CourseDetailsViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import timber.log.Timber
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -38,6 +45,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val departmentsAdapter = DepartmentsAdapter(departments)
         departmentsRv.adapter = departmentsAdapter
         departmentsRv.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+
+        // TODO demo using ViewModels
+        val factory = ContosoViewModelFactory(this.applicationContext)
+        val courseModel = ViewModelProviders.of(this, factory).get(CourseDetailsViewModel::class.java)
+        courseModel.course.observe(this, Observer<Course> {
+            // Update UI
+            Timber.d(it.toString())
+        })
+        courseModel.instructor.observe(this, Observer<Instructor> {
+            // Update UI
+            Timber.d(it.toString())
+        })
+        courseModel.courseId = 3141L
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
